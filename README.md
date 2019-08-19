@@ -14,4 +14,4 @@ Sovrin rest service
 
 - Import tests/credentialReqResp.postman_collection.json in postman
 
-- Execute the rest api calls in postman sequentially
+- Execute the rest api calls in postman
