@@ -1,5 +1,8 @@
-# 510SovrinService
+# TyknSovrinService
 Sovrin rest service
+Demo:
+
+[![asciicast](https://asciinema.org/a/FQwE0H2LvkEiP5xvFt6477NBq.svg)](https://asciinema.org/a/FQwE0H2LvkEiP5xvFt6477NBq)
 
 ## Docker 
 - Install docker
