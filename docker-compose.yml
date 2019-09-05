@@ -9,6 +9,8 @@ services:
         pool_ip: '10.0.0.2'
     init: true
     container_name: tykn_indy_pool
+    healthcheck:
+      test: "exit 0"
     ports:
       - "9701:9701"
       - "9702:9702"
@@ -32,6 +34,10 @@ services:
     networks:
       pool_network:
         ipv4_address: 10.0.0.3
+    healthcheck:
+      test: "exit 0"
+    depends_on:
+      - indypool
     links:
       - indypool
   orgims:
@@ -45,9 +51,13 @@ services:
     networks:
       pool_network:
         ipv4_address: 10.0.0.4
+    depends_on:
+      - indypool
+      - tyknims
     links:
       - indypool
       - tyknims
+    restart: on-failure
   userims:
     build: 
       context: UserIMS 
@@ -59,6 +69,9 @@ services:
     networks:
       pool_network:
         ipv4_address: 10.0.0.5
+    depends_on:
+      - indypool
+      - tyknims
     links:
       - indypool
 
@@ -68,5 +81,4 @@ networks:
     ipam:
       driver: default
       config:
-        -
-          subnet: 10.0.0.0/24
+        - subnet: 10.0.0.0/24
